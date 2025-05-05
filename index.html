@@ -94,11 +94,17 @@ trabalho de filosofia
       cursor: pointer;
       font-size: 12px;
     }
+
+    .logo {
+      max-width: 150px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Tire a sua verdade</h1>
+    <img src="uffs-logo.png" alt="Logo da UFFS - Curso de Química" class="logo">
     <div class="simbolos">☯ ⚖ ✨ 🧠 🔍</div>
     <button onclick="sortearFrase()">Sortear Frase</button>
     <div id="frase"></div>
@@ -137,7 +143,9 @@ trabalho de filosofia
     ];
 
     function sortearFrase() {
-      const sorteada = frases[Math.floor(Math.random() * frases.length)];
+      const frasesAnonimas = JSON.parse(localStorage.getItem("frasesAnonimas")) || [];
+      const todasFrases = frases.concat(frasesAnonimas);
+      const sorteada = todasFrases[Math.floor(Math.random() * todasFrases.length)];
       document.getElementById("frase").innerText = sorteada;
     }
 
